@@ -1,0 +1,165 @@
+---
+title: "Remitscope: Kenya Case"
+subtitle: "Remittances"
+author: "William Clinton Co"
+thanks: "The University of British Columbia. Email: clinton.will.c@gmail.com"
+date: today
+date-format: "MMMM D, YYYY"
+
+abstract: |
+  This document examines discrepancies identified in the Remitscope dataset, with a particular focus on Kenya. The analysis compares Remitscope data with official statistics published by the Central Bank of Kenya and the World Bank, highlighting significant differences in reported remittance values.
+
+format:
+  pdf:
+    documentclass: article
+    geometry: 
+      - margin=1in
+    fontsize: 11pt
+    linestretch: 1
+    number-sections: true
+    toc: true
+    toc-depth: 10
+    lof: false
+    lot: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    citecolor: blue
+    cite-method: biblatex
+    fig-pos: "H"
+    tbl-pos: "H"
+    include-in-header:
+      - text: |
+          \usepackage{hyperref}
+          \usepackage{float}
+          \usepackage{graphicx}
+          \hypersetup{
+            colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            breaklinks=true,
+            pdfborder={0 0 0}
+          }
+bibliography: references.bib
+csl: apa.csl
+---
+
+# Introduction
+
+This report investigates the discrepancies between remittance data reported by Remitscope and the official figures published by the Central Bank of Kenya. The analysis focuses on Kenya as a case study, utilizing data sourced from the Remitscope website ([Remitscope Africa Themes](https://remitscope.org/africa/themes/)), the official statistics published by the Central Bank of Kenya ([Diaspora Remittances](https://www.centralbank.go.ke/diaspora-remittances/)), and the World Bank/IMF Balance of Payments remittance data ([World Bank Indicator](https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT?end=2024&locations=KE&start=2020)).
+
+# Theory
+
+Remitscope states that its dataset is sourced from the Central Bank of Kenya. Such that, remittance figures obtained directly from the Central Bank of Kenya should closely align with those reported by Remitscope. Furthermore, these values are expected to be broadly consistent with remittance data published by the World Bank.
+
+# Aggregate Analysis
+
+Kenya presents a notable case of data inconsistency. @tbl-remitscope-kenya summarizes remittance inflows to Kenya as **\underline{reported by Remitscope}** with all values attributed to the Central Bank of Kenya as the source.
+
+| Sending Country         | Receiving Country | Year | Value (USD millions) | Source                   |
+|------------------------|-------------------|------|----------------------|--------------------------|
+| Australia              | Kenya             | 2024 | 184,497.10           | Central Bank of Kenya    |
+| Austria                | Kenya             | 2024 | 13,169.07            | Central Bank of Kenya    |
+| Bahamas                | Kenya             | 2024 | 1,453.63             | Central Bank of Kenya    |
+| Bahrain                | Kenya             | 2024 | 5,004.77             | Central Bank of Kenya    |
+| Belgium                | Kenya             | 2024 | 22,844.65            | Central Bank of Kenya    |
+| Canada                 | Kenya             | 2024 | 130,812.77           | Central Bank of Kenya    |
+| China                  | Kenya             | 2024 | 5,981.68             | Central Bank of Kenya    |
+| Côte d'Ivoire          | Kenya             | 2024 | 4,351.23             | Central Bank of Kenya    |
+| Egypt                  | Kenya             | 2024 | 2,710.85             | Central Bank of Kenya    |
+| France                 | Kenya             | 2024 | 25,420.56            | Central Bank of Kenya    |
+| Germany                | Kenya             | 2024 | 197,764.19           | Central Bank of Kenya    |
+| India                  | Kenya             | 2024 | 20,594.87            | Central Bank of Kenya    |
+| Iraq                   | Kenya             | 2024 | 18,473.97            | Central Bank of Kenya    |
+| Italy                  | Kenya             | 2024 | 33,857.17            | Central Bank of Kenya    |
+| Japan                  | Kenya             | 2024 | 6,019.67             | Central Bank of Kenya    |
+| Malawi                 | Kenya             | 2024 | 2,348.47             | Central Bank of Kenya    |
+| **\underline{Namibia}**              | **\underline{Kenya}**             | **\underline{2020}** | **\underline{22.28}**               | **\underline{Central Bank of Kenya}**    |
+| New Zealand            | Kenya             | 2024 | 2,997.80             | Central Bank of Kenya    |
+| Nigeria                | Kenya             | 2024 | 7,235.87             | Central Bank of Kenya    |
+| Norway                 | Kenya             | 2024 | 20,219.73            | Central Bank of Kenya    |
+| Oman                   | Kenya             | 2024 | 8,642.36             | Central Bank of Kenya    |
+| Qatar                  | Kenya             | 2024 | 69,232.14            | Central Bank of Kenya    |
+| Saudi Arabia           | Kenya             | 2024 | 404,105.02           | Central Bank of Kenya    |
+| South Africa           | Kenya             | 2024 | 24,095.10            | Central Bank of Kenya    |
+| South Sudan            | Kenya             | 2024 | 5,789.71             | Central Bank of Kenya    |
+| Sweden                 | Kenya             | 2024 | 18,233.93            | Central Bank of Kenya    |
+| Switzerland            | Kenya             | 2024 | 51,518.22            | Central Bank of Kenya    |
+| Tanzania               | Kenya             | 2024 | 75,845.29            | Central Bank of Kenya    |
+| The Netherlands        | Kenya             | 2024 | 31,220.55            | Central Bank of Kenya    |
+| Uganda                 | Kenya             | 2024 | 64,988.79            | Central Bank of Kenya    |
+| United Arab Emirates   | Kenya             | 2024 | 137,814.50           | Central Bank of Kenya    |
+| United Kingdom         | Kenya             | 2024 | 358,836.44           | Central Bank of Kenya    |
+| United States          | Kenya             | 2024 |2,637,772.27                | Central Bank of Kenya    |
+| Zambia                 | Kenya             | 2024 | 8,091.51             | Central Bank of Kenya    |
+
+: Remittance Inflows to Kenya as Reported by Remitscope (2024) {#tbl-remitscope-kenya}
+
+A notable outlier is the entry for Namibia in 2020, which reports a single data point of 22 USD million. This raises the following questions:
+
+1. Why is there only one data point for Namibia in 2020 from the Central Bank of Kenya?
+2. Why does the Central Bank of Kenya report remittance inflows from only one country in 2020?
+
+
+# Comparison of Aggregate Remittance Data
+
+Using the official Central Bank of Kenya data for 2024, the aggregate remittance inflows are as follows (values in USD millions):
+
+- North America: 2,775.15
+- Europe: 860.60
+- Rest of World: 1,309.47
+- **Total Remittances:** 4,945.22
+
+In contrast, the Remitscope dataset (attributed to the Central Bank of Kenya) reports a total of:
+
+- **Total Remittances:** 4,601,966.28 
+
+
+A comparative summary is presented in @tbl-aggregate-comparison:
+
+| Source                                   | Total Remittances (USD millions) |
+|-------------------------------------------|----------------------------------|
+| Central Bank of Kenya (Direct)            | 4,945                            |
+| Remitscope (Central Bank)                 | 4,601,966                       |
+| World Bank (IMF balance of payments data) | 4,999                            |
+
+: Comparison of Total Remittance Inflows to Kenya (2024) {#tbl-aggregate-comparison}
+
+As shown, the total remittance inflows reported by Remitscope sourced from the Central Bank of Kenya are nearly 930 times greater than the official figures published directly by the Central Bank and the World Bank. 
+
+# Regional Analysis
+
+Focusing on regional data, Remitscope reports the following remittance inflows from North America to Kenya (@tbl-north-america):
+
+| Sending Country | Receiving Country | Year | Value (USD millions) | Source                |
+|-----------------|------------------|------|----------------------|-----------------------|
+| Canada          | Kenya            | 2024 | 130,812.77           | Central Bank of Kenya |
+| United States   | Kenya            | 2024 | 2,637,772.27                | Central Bank of Kenya |
+
+: North America Remittance Inflows to Kenya as Reported by Remitscope (2024) {#tbl-north-america}
+
+A comparison of North America remittance totals is presented in @tbl-north-america-comparison:
+
+| Source                        | Total Remittances (USD millions) |
+|-------------------------------|----------------------------------|
+| Central Bank of Kenya (Direct)| 2,775.15                         |
+| Remitscope (Central Bank)     | 2,768,585.04                     |
+
+: Comparison of North America Remittance Inflows to Kenya (2024) {#tbl-north-america-comparison}
+
+Again, this demonstrates a substantial discrepancy between the two sources of roughly 1000 times. 
+
+
+# GDP 
+
+According to the latest available data, Kenya's Gross Domestic Product (GDP) is approximately USD 124.5 billion. In contrast, the aggregate remittance inflows reported by Remitscope (Central Bank) for Kenya approach USD 4.6 trillion. This figure is highly unlikely, as it exceeds Kenya's GDP by a factor of more than 16,000. 
+
+# Conclusion
+
+The analysis demonstrates substantial inconsistencies between remittance data reported by Remitscope and the official statistics published by both the Central Bank of Kenya and the World Bank. The magnitude of these discrepancies, reaching several orders of difference. Further clarification from Remitscope is requested regarding the sources of these discrepancies. 
+
+# References
+
+- Remitscope Africa Themes. Retrieved October 21, 2025, from [https://remitscope.org/africa/themes/](https://remitscope.org/africa/themes/)
+- Central Bank of Kenya. Diaspora Remittances. Retrieved October 21, 2025, from [https://www.centralbank.go.ke/diaspora-remittances/](https://www.centralbank.go.ke/diaspora-remittances/)
+- World Bank. Personal remittances, received (current US$) – Kenya. Retrieved October 21, 2025, from [https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT?end=2024&locations=KE&start=2020](https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT?end=2024&locations=KE&start=2020)
