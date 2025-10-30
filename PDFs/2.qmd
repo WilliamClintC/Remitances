@@ -1,0 +1,124 @@
+---
+title: "Progress Update"
+subtitle: "Remittances"
+author: "William Clinton Co"
+thanks: "The University of British Columbia. Email: clinton.will.c@gmail.com"
+date: today
+date-format: "MMMM D, YYYY"
+
+abstract: |
+  This paper examines the current state of the remittance dataset we have compiled. Incorporating new information obtained through correspondence with Remitscope, I reassess the data quality and demonstrate that significant concerns persist. The purpose of this document is to evaluate whether it is worthwhile to continue working with the existing flawed dataset or to consider developing a new dataset.
+
+format:
+  pdf:
+    documentclass: article
+    geometry: 
+      - margin=1in
+    fontsize: 11pt
+    linestretch: 1
+    number-sections: true
+    toc: true
+    toc-depth: 10
+    lof: false
+    lot: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    citecolor: blue
+    cite-method: biblatex
+    fig-pos: "H"
+    tbl-pos: "H"
+    include-in-header:
+      - text: |
+          \usepackage{hyperref}
+          \usepackage{float}
+          \usepackage{graphicx}
+          \hypersetup{
+            colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            breaklinks=true,
+            pdfborder={0 0 0}
+          }
+bibliography: references.bib
+csl: apa.csl
+---
+
+# Introduction
+
+Following correspondence with the Remitscope team, several data discrepancies have been resolved; however, significant errors remain in the dataset that require further investigation. Although methodological workarounds are available to address these limitations, conducting regression analysis at this stage may introduce additional noise rather than yield meaningful insights. This paper documents the current state of available datasets and  assesses their reliability. I first present stylized facts to provide a broad overview of the observations and evaluate the data from a conservative perspective, acknowledging the known flaws in the Remitscope dataset. Subsequently, I adopt an even more cautious approach by examining a specific case, the Philippines, to demonstrate that data concerns persist even at this granular level. Finally, in Section 6, I outline potential next steps, including whether to continue using the current dataset or to seek alternative sources.
+
+
+
+# Data Overview
+
+
+| Dataset | Level | Temporal Coverage | Coverage Scope | Data Source | Incorporated? |
+|---------|-------|-------------------|----------------|-------------|---------------|
+| Bangladesh | Country corridor | 2021–2024 | Top 20 remittance corridors | Bangladesh Bank ([Central Bank](https://www.bb.org.bd/en/index.php/econdata/wageremitance)) | No |
+| Italy | Provincial | 2011–2025 | Remittances from over 20 countries with sub-national granularity | Banca d'Italia ([Central Bank](https://www.bancaditalia.it/statistiche/tematiche/rapporti-estero/rimesse-immigrati/index.html?com.dotmarketing.htmlpage.language=1)) | No |
+| Kpodar et al. | Country corridor | 2018–2020 | Cross-country panel data covering over 20 corridors | International Monetary Fund ([IMF Working Paper](https://www.imf.org/en/Publications/WP/Issues/2021/07/16/Defying-the-Odds-Remittances-During-the-COVID-19-Pandemic-461321)) | Yes |
+| Philippines | Country corridor | 2012–2025 | Complete bilateral remittance data | Bangko Sentral ng Pilipinas ([Central Bank](https://www.bsp.gov.ph/Pages/MediaAndResearch/PublicationsAndReports/MonthlySelectedPhilippineEconomicIndicators.aspx)) | No |
+| South Asia | Country corridor | 2018–2022 | Top 10 remittance-receiving countries | Rahman (2023) ([Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/I6VB8V)) | No |
+| Remitscope | Country Corridor | 2019-2024 | All partners of Africa and Latin America | [Remitscope Website](https://remitscope.org/) | Yes |
+
+: Summary of Remittance Datasets Used in Analysis 
+
+# Stylized Facts
+
+1. Remitscope provides a semi-accurate representation of remittance flows. It is not necessarily the most up-to-date or complete source. For instance, the Philippines dataset contains comprehensive bilateral data from 2012 to 2025, whereas Remitscope lacks this coverage.
+2. The granularity and availability of remittance data vary significantly across central banks; some provide more detailed information than others.
+3. Remittance flows generally exhibit an upward trend over time,  appropriate normalization is needed. 
+4. Remittance reporting and effects are subject to temporal lags, making lag adjustments important.
+5. Incorporating country fixed effects is essential to account for unobserved heterogeneity in remittance patterns.
+6. Input exchange rate is important 
+7. The IMF/ World Bank datasets tend to consistently overestimate remittance figures compared to central bank sources.
+
+
+
+# Is the central bank dataset consistent with the macro-level remittance figures by the World Bank and IMF?
+
+Analysis indicates that removing Remitscope values yields more reasonable estimates. Utilizing only the Kpodar et al. dataset, which is rooted in central bank data, produces improved results, though substantial discrepancies persist, with certain errors reaching magnitudes in the billions of USD.
+
+@fig-percent-diff illustrates these discrepancies through percentage differences between the datasets. A notable proportion of these percentage differences exhibit extremely high magnitudes, suggesting systematic measurement issues rather than random variation.
+
+![Percentage Differences Between Central Bank and World Bank/IMF Remittance Estimates](../Images/newplot.png){#fig-percent-diff}
+
+@fig-distribution presents the distribution of absolute differences between the datasets. The distribution reveals that discrepancies of several billion USD are both common and concerning.
+
+![Distribution of Absolute Differences in Remittance Estimates](../Images/Screenshot 2025-10-29 234809.png){#fig-distribution}
+
+Several factors may account for these residual errors:
+
+1. **Incomplete bilateral reporting**: Many countries disclose remittance flows only from their top partner countries rather than providing comprehensive bilateral data. This selective reporting may lead to systematic underestimation of total remittance inflows.
+
+2. **Retrospective data revisions**: Historical data is frequently updated with new information, creating temporal inconsistencies when comparing datasets compiled at different points in time. These back-additions can introduce substantial discrepancies between otherwise comparable sources. 
+
+
+# Retrospective Data Revisions: The Philippines Case
+
+To illustrate the impact of retrospective data revisions, we examine Philippine remittance data obtained directly from the Bangko Sentral ng Pilipinas ([Central Bank of the Philippines](https://www.bsp.gov.ph/Pages/MediaAndResearch/PublicationsAndReports/MonthlySelectedPhilippineEconomicIndicators.aspx)). 
+
+In principle, the Kpodar et al. dataset should align closely with the Philippine central bank dataset, given that Kpodar et al. sourced their information from the same institution in 2020. However, substantial discrepancies emerge even when comparing data ostensibly from the same source.
+
+@fig-phil-absolute illustrates the absolute differences in reported remittance values between the two datasets. The largest discrepancy reaches approximately USD 3 billion, a difference that raises concerns about data consistency and temporal stability.
+
+![Absolute Differences Between Kpodar et al. and Philippine Central Bank Remittance Data](../Images/1.png){#fig-phil-absolute}
+
+@fig-phil-percent further demonstrates that the IMF/World Bank figures consistently overestimate the central bank's reported values. This systematic bias amounts to approximately 17% or roughly USD 5 billion in absolute terms. While the percentage difference shown in @fig-phil-percent suggests that the USD 3 billion discrepancy represents approximately 12% of total flows, such magnitudes remain concerning. 
+
+![Percentage Differences Between IMF/World Bank and Philippine Central Bank Data](../Images/2.png){#fig-phil-percent}
+
+These findings demonstrate the timing of data collection can introduce substantial measurement error, complicating efforts to ensure data quality and consistency.
+
+# Future Steps
+
+Two potential pathways forward are available:
+
+- **Develop a custom, comprehensive remittance dataset:**
+  - Leverage existing knowledge of countries that publish remittance data, as identified through Remitscope and Kpodar et al.
+  - Systematically compile bilateral remittance statistics, prioritizing countries that provide complete data, for example the Philippines.
+
+- **Continue refining analyses using the current datasets (Remitscope and Kpodar et al.):**
+  - Address identified limitations and data quality concerns through methodological adjustments.
+  - Implement appropriate controls and robustness checks to account for known measurement errors.
